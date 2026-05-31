@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TEAM ROCKET FILES</title>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+    background:#0a1f3d;
+    background-image: repeating-linear-gradient(45deg, rgba(0,180,255,0.08), rgba(0,180,255,0.08) 2px, transparent 2px, transparent 6px);
+    font-family:'Special Elite', cursive;
+    color:#a0d8ff;
+    min-height:100vh;
+    padding:40px;
+    overflow-x:hidden;
+    cursor: none;
+}
+
+/* Custom Cursor */
+#custom-cursor {
+    position: fixed;
+    width: 32px;
+    height: 32px;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    user-select: none;
+}
+
+/* Back Button */
+.back-btn {
+    position: fixed;
+    top: 30px;
+    left: 800px;
+    padding: 10px 20px;
+    background: #112b4f;
+    border: 3px solid #ff0000;
+    color: #ffcccc;
+    font-family: 'Special Elite', cursive;
+    font-size: 1.1rem;
+    text-decoration: none;
+    z-index: 1000;
+    transition: 0.3s;
+    box-shadow: 4px 4px 0px rgba(255,0,0,0.4);
+}
+
+.back-btn:hover {
+    background: #ff0000;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 6px 6px 0px rgba(255,0,0,0.6);
+}
+
+/* Search Bar */
+#search-bar {
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 12px 20px;
+    background: #112b4f;
+    border: 2px solid #00ccff;
+    color: #a0d8ff;
+    font-family: 'Special Elite', cursive;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.95);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: #112b4f;
+    border: 4px solid #ff0000;
+    padding: 25px;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 0 30px #ff0000;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: #ff4444;
+}
+
+.glitch { 
+    position: relative; 
+    color: #00ccff; 
+    font-size: 4rem; 
+    letter-spacing: 4px; 
+    animation: glitch-skew 4s infinite linear alternate-reverse; 
+}
+
+.card { 
+    cursor: none; 
+    background:#112b4f; 
+    border:3px solid #00ccff; 
+    padding:15px; 
+    box-shadow: 5px 5px 0px rgba(0,204,255,0.3), -3px -3px 0px rgba(0,204,255,0.1); 
+    transition:0.3s; 
+    position:relative; 
+    overflow:hidden; 
+}
+
+.card:hover { 
+    transform:rotate(-2deg) scale(1.04); 
+    box-shadow:8px 8px 0px rgba(0,204,255,0.5); 
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 40%;
+    height: 40%;
+    background: rgba(255,255,255,0.15);
+    transform: rotate(30deg);
+    animation: scanline 4s linear infinite;
+    opacity: 0.3;
+}
+
+@keyframes scanline {
+    0% { transform: translateY(-100%) rotate(30deg); }
+    100% { transform: translateY(400%) rotate(30deg); }
+}
+
+.card img{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+    border:2px solid #00ccff;
+    transition:0.4s;
+}
+
+.file-no{
+    text-align:center;
+    margin-top:10px;
+    font-size:0.9rem;
+    color:#77b8ff;
+}
+
+.name{
+    text-align:center;
+    font-size:1.5rem;
+    margin-top:10px;
+    font-weight:bold;
+    color:#ffffff;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+footer{
+    margin-top:50px;
+    text-align:center;
+    border-top:4px double #00ccff;
+    padding-top:20px;
+    font-size:0.9rem;
+    color:#77b8ff;
+}
+</style>
+</head>
+<body>
+
+<img id="custom-cursor" src="cc.png" alt="cursor">
+
+<!-- Back Button -->
+<a href="portal.html" class="back-btn">← BACK TO PORTAL</a>
+
+<header>
+    <h1 class="glitch" data-text="TEAM ROCKET FILES">TEAM ROCKET FILES</h1>
+    <p>ARCHIVE • LEVEL 7 CLEARANCE</p>
+    <input type="text" id="search-bar" placeholder="SEARCH POKÉMON..." onkeyup="filterCards()">
+</header>
+
+<div class="grid" id="grid">
+
+    <div class="card" data-name="Arbok">
+        <img src="p1.png">
+        <div class="file-no">FILE #001</div>
+        <div class="name">Arbok</div>
+    </div>
+
+    <div class="card" data-name="Wobbuffet">
+        <img src="p2.png">
+        <div class="file-no">FILE #002</div>
+        <div class="name">Wobbuffet</div>
+    </div>
+
+    <div class="card" data-name="Seviper">
+        <img src="p3.png">
+        <div class="file-no">FILE #003</div>
+        <div class="name">Seviper</div>
+    </div>
+
+    <div class="card" data-name="Gourgeist">
+        <img src="p4.png">
+        <div class="file-no">FILE #004</div>
+        <div class="name">Gourgeist</div>
+    </div>
+
+    <div class="card" data-name="Weezing">
+        <img src="p5.png">
+        <div class="file-no">FILE #005</div>
+        <div class="name">Weezing</div>
+    </div>
+
+    <div class="card" data-name="Victreebel">
+        <img src="p6.png">
+        <div class="file-no">FILE #006</div>
+        <div class="name">Victreebel</div>
+    </div>
+
+    <div class="card" data-name="Cacnea">
+        <img src="p7.png">
+        <div class="file-no">FILE #007</div>
+        <div class="name">Cacnea</div>
+    </div>
+
+    <div class="card" data-name="Carnivine">
+        <img src="p8.png">
+        <div class="file-no">FILE #008</div>
+        <div class="name">Carnivine</div>
+    </div>
+
+    <div class="card" data-name="Meowth">
+        <img src="p9.png">
+        <div class="file-no">FILE #009</div>
+        <div class="name">Meowth</div>
+    </div>
+
+    <div class="card" data-name="Persian">
+        <img src="p10.png">
+        <div class="file-no">FILE #010</div>
+        <div class="name">Persian</div>
+    </div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">×</span>
+        <h2 id="modal-name"></h2>
+        <img id="modal-img" style="width:100%; border:3px solid #00ccff; margin:15px 0;">
+        <p id="modal-desc">CLASSIFIED INFORMATION<br>Threat Level: <strong>HIGH</strong><br>Team Rocket Asset</p>
+    </div>
+</div>
+
+<footer>
+    TEAM ROCKET INTELLIGENCE DIVISION • DIGITAL ARCHIVE
+</footer>
+
+<script>
+// Custom Cursor
+const cursor = document.getElementById('custom-cursor');
+document.addEventListener('mousemove', (e) => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+});
+
+// Search Function
+function filterCards() {
+    const search = document.getElementById('search-bar').value.toLowerCase();
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        const name = card.getAttribute('data-name').toLowerCase();
+        card.style.display = name.includes(search) ? 'block' : 'none';
+    });
+}
+
+// Modal Functions
+function openModal(name, imgSrc) {
+    document.getElementById('modal-name').textContent = name;
+    document.getElementById('modal-img').src = imgSrc;
+    document.getElementById('modal').style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+}
+
+// Card Click Event
+document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => {
+        const name = card.querySelector('.name').textContent;
+        const imgSrc = card.querySelector('img').src;
+        openModal(name, imgSrc);
+    });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pokemon Times</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#e7dcc0;
+    background-image:
+    repeating-linear-gradient(
+        0deg,
+        rgba(0,0,0,0.02),
+        rgba(0,0,0,0.02) 2px,
+        transparent 2px,
+        transparent 4px
+    );
+    font-family:'Cormorant Garamond', serif;
+    color:#111;
+    padding:40px;
+}
+
+.newspaper{
+    max-width:1200px;
+    margin:auto;
+    background:#efe3c3;
+    border:6px double #111;
+    padding:30px;
+    box-shadow:0 0 20px rgba(0,0,0,0.3);
+}
+
+.masthead{
+    text-align:center;
+    border-bottom:4px solid #111;
+    padding-bottom:15px;
+    margin-bottom:25px;
+}
+
+.masthead h1{
+    font-size:4rem;
+    letter-spacing:4px;
+    text-transform:uppercase;
+}
+
+.masthead p{
+    font-family:'Special Elite', cursive;
+    margin-top:10px;
+}
+
+.content{
+    display:grid;
+    grid-template-columns:300px 1fr;
+    gap:30px;
+}
+
+.image-column{
+    border-right:3px solid #111;
+    padding-right:20px;
+}
+
+.image-column img{
+    width:100%;
+    display:block;
+    border:3px solid #111;
+    filter:grayscale(100%) contrast(110%);
+}
+
+.caption{
+    margin-top:10px;
+    font-size:0.9rem;
+    font-style:italic;
+    text-align:center;
+}
+
+.article h2{
+    font-size:3rem;
+    line-height:1;
+    margin-bottom:20px;
+    text-transform:uppercase;
+}
+
+.article p{
+    font-size:1.3rem;
+    line-height:1.7;
+    text-align:justify;
+    column-count:2;
+    column-gap:40px;
+}
+
+.dropcap::first-letter{
+    float:left;
+    font-size:5rem;
+    line-height:0.8;
+    padding-right:8px;
+    font-weight:bold;
+}
+
+.footer{
+    margin-top:30px;
+    border-top:2px solid #111;
+    padding-top:10px;
+    text-align:center;
+    font-family:'Special Elite', cursive;
+}
+
+@media(max-width:900px){
+
+.content{
+    grid-template-columns:1fr;
+}
+
+.image-column{
+    border-right:none;
+    border-bottom:3px solid #111;
+    padding-right:0;
+    padding-bottom:20px;
+}
+
+.article p{
+    column-count:1;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="newspaper">
+
+    <div class="masthead">
+        <h1>POKEMON TIMES</h1>
+        <p>Hoenn Region</p>
+    </div>
+
+    <div class="content">
+
+        <div class="image-column">
+            <img src="exp3.png" alt="Newspaper Photo">
+
+            <div class="caption">
+               <p>SILPH CO. IN SHAMBLES: Multimillion-Pokédollar Master Ball Eaten Like a Berry by Wild Whiscash</p>></p>
+            </div>
+        </div>
+
+        <div class="article">
+
+            <h2>FISHERMAN’S FOLLY: Team Rocket Battle Clears Path for the Most Expensive Burp in Hoenn History</h2>
+
+            <p class="dropcap">
+               We are still processing the absolute madness that just went down over in the Hoenn region, folks. Word from the local Gym community confirms that an elite fisherman named Sullivan actually tracked down "Nero"—that absolute unit of a wild Whiscash—and instead of using a standard Net Ball, he pulled out a genuine, certified Master Ball.
+Now, we all know Team Rocket showed up right on cue to try and net the giant fish for themselves, but after Ash Ketchum’s crew blasted those thieves into the ozone, Sullivan had a clear shot. He threw the multi-million-pokédollar, top-secret Silph Co. prototype... and Nero literally just opened its mouth, swallowed it whole, let out a massive burp, and swam away. I've seen some wild things working the Pokémon beat, but watching the ultimate capturing technology get treated like a Magikarp biscuit is a new level of heartbreak. If anyone needs me, I'll be at the Pokémon Center helping Sullivan recover from emotional damage. </p>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        News that is retracted from public. 
+    </div>
+
+</div>
+
+</body>
+</html>

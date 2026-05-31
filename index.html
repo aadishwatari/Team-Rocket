@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ACCESS TERMINAL</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:black;
+    overflow:hidden;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:monospace;
+    cursor:crosshair;
+}
+
+/* Background Static */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,0.02) 0px,
+        rgba(255,255,255,0.02) 1px,
+        transparent 2px,
+        transparent 4px
+    );
+    pointer-events:none;
+    animation:flicker .15s infinite;
+}
+
+@keyframes flicker{
+    0%{opacity:.8;}
+    50%{opacity:1;}
+    100%{opacity:.7;}
+}
+
+/* Logo */
+.logo{
+    width:250px;
+    position:relative;
+    z-index:100;
+    cursor:pointer;
+
+    filter:
+    drop-shadow(0 0 15px #ff0000)
+    drop-shadow(0 0 30px #ff0000)
+    drop-shadow(0 0 60px #ff0000);
+
+    animation:
+    pulse 2s infinite,
+    glitch 0.3s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.05);
+    }
+}
+
+@keyframes glitch{
+    0%{transform:translate(0);}
+    20%{transform:translate(-2px,2px);}
+    40%{transform:translate(2px,-2px);}
+    60%{transform:translate(-1px,1px);}
+    80%{transform:translate(1px,-1px);}
+    100%{transform:translate(0);}
+}
+
+/* Popup Text */
+.popup{
+    position:absolute;
+    color:#ff0000;
+    font-size:14px;
+    font-weight:bold;
+    text-shadow:0 0 10px red;
+    animation:appear 2s forwards;
+    pointer-events:none;
+}
+
+@keyframes appear{
+    0%{
+        opacity:0;
+        transform:scale(0.7);
+    }
+    20%{
+        opacity:1;
+    }
+    100%{
+        opacity:0;
+        transform:scale(1.3);
+    }
+}
+
+/* Glitch Overlay */
+.glitch-overlay{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    mix-blend-mode:screen;
+    animation:glitchScreen .2s infinite;
+}
+
+@keyframes glitchScreen{
+    0%{
+        transform:translate(0);
+    }
+    25%{
+        transform:translate(2px,-2px);
+    }
+    50%{
+        transform:translate(-2px,2px);
+    }
+    75%{
+        transform:translate(1px,-1px);
+    }
+    100%{
+        transform:translate(0);
+    }
+}
+
+.warning{
+    position:absolute;
+    top:30px;
+    width:100%;
+    text-align:center;
+    color:red;
+    letter-spacing:4px;
+    font-size:18px;
+    animation:blink .6s infinite;
+}
+
+@keyframes blink{
+    50%{
+        opacity:0;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="warning">
+SYSTEM BREACH DETECTED
+</div>
+
+<img src="logo.png"
+class="logo"
+onclick="window.location.href='portal.html'">
+
+<div class="glitch-overlay"></div>
+
+<script>
+
+const messages = [
+"UNAUTHORIZED ACCESS",
+"SECURITY BREACH",
+"ACCESS DENIED",
+"WARNING",
+"TRACE DETECTED",
+"FIREWALL FAILURE",
+"INTRUDER FOUND",
+"DATA CORRUPTION",
+"SYSTEM ERROR",
+"ROOT ACCESS REQUESTED",
+"CONNECTION INTERCEPTED",
+"UNKNOWN USER"
+];
+
+function createPopup(){
+
+    const popup=document.createElement("div");
+    popup.className="popup";
+
+    popup.innerText=
+    messages[Math.floor(Math.random()*messages.length)];
+
+    popup.style.left=Math.random()*window.innerWidth+"px";
+    popup.style.top=Math.random()*window.innerHeight+"px";
+
+    document.body.appendChild(popup);
+
+    setTimeout(()=>{
+        popup.remove();
+    },2000);
+}
+
+setInterval(createPopup,500);
+
+</script>
+
+</body>
+</html>

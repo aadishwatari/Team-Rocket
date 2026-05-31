@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Application Result</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Cinzel:wght@500;600;700&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+body{
+background:#2b0018;
+color:white;
+font-family: 'Cinzel', serif;
+min-height:100vh;
+overflow-x:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:40px 20px;
+}
+
+/* Confetti */
+.confetti{
+position:fixed;
+width:10px;
+height:10px;
+top:-20px;
+animation:fall linear infinite;
+z-index:1;
+}
+@keyframes fall{
+to{
+transform:translateY(110vh) rotate(720deg);
+    }
+}
+
+/* Main Card */
+.container{
+max-width:900px;
+background:rgba(0,0,0,0.45);
+border:2px solid #ff4d6d;
+padding:50px;
+border-radius:15px;
+text-align:center;
+box-shadow:0 0 25px rgba(255,77,109,.4);
+z-index:2;
+}
+h1{
+font-family: 'Playfair Display', serif;
+color:#ff4d6d;
+margin-bottom:20px;
+font-size:3.2rem;
+text-shadow:0 0 15px #ff4d6d;
+letter-spacing:2px;
+}
+h2{
+font-family: 'Cinzel', serif;
+margin-bottom:25px;
+line-height:1.6;
+font-weight:600;
+}
+p{
+margin:18px 0;
+line-height:1.8;
+font-size:1.05rem;
+}
+blockquote{
+margin:30px auto;
+padding:20px;
+border-left:4px solid #ff4d6d;
+background:rgba(255,255,255,.05);
+font-size:1.25rem;
+max-width:600px;
+font-style:italic;
+font-family: 'Cinzel', serif;
+}
+.reject{
+font-family: 'Playfair Display', serif;
+color:#ff4d6d;
+font-size:3.1rem;
+margin:35px 0;
+text-shadow:0 0 20px #ff4d6d;
+letter-spacing:3px;
+}
+h3{
+margin-top:40px;
+color:#ff8fab;
+font-family: 'Cinzel', serif;
+letter-spacing:1px;
+}
+.home-btn{
+margin-top:40px;
+display:inline-block;
+padding:15px 35px;
+text-decoration:none;
+color:white;
+border:2px solid #ff4d6d;
+border-radius:10px;
+font-weight:bold;
+transition:.3s;
+font-family: 'Cinzel', serif;
+}
+.home-btn:hover{
+background:#ff4d6d;
+box-shadow:0 0 20px #ff4d6d;
+transform:translateY(-3px);
+}
+</style>
+</head>
+<body>
+<!-- Confetti Generator -->
+<script>
+for(let i=0;i<120;i++){
+let c=document.createElement("div");
+c.className="confetti";
+c.style.left=Math.random()*100+"vw";
+c.style.background=
+        ["#ff4d6d","#ff8fab","#ffffff","#ffb3c6"][
+Math.floor(Math.random()*4)
+        ];
+c.style.animationDuration=
+        (Math.random()*5+4)+"s";
+c.style.animationDelay=
+Math.random()*5+"s";
+document.body.appendChild(c);
+}
+</script>
+
+<div class="container">
+<h1>CONGRATULATIONS!</h1>
+<h2>
+We are pleased to inform you that after extensive review,
+Team Rocket has reached a final decision regarding your application.
+</h2>
+<p>
+Your dossier was carefully examined by our finest analysts,
+three highly trained executives,
+and one particularly judgmental Meowth.
+</p>
+<p>
+After reviewing your aptitude, loyalty, intelligence,
+battle potential, criminal capability,
+and general usefulness...
+</p>
+<div class="reject">
+YOU ARE COMPLETELY INCOMPETENT.
+</div>
+<p>
+That's right.
+</p>
+<p>
+Not merely unqualified.<br>
+Not merely unsuitable.<br>
+Not merely disappointing.
+</p>
+<p>
+Our researchers have concluded that your application
+represents a previously undocumented level of incompetence.
+</p>
+<p>
+Several interns resigned while reading it.
+</p>
+<p>
+One administrator attempted to feed your application
+to a Pidgey.
+</p>
+<p>
+Giovanni himself reportedly stared at your file
+for several minutes before asking:
+</p>
+<blockquote>
+"Is this a prank?"
+</blockquote>
+<p>
+Unfortunately, Team Rocket cannot offer you a position.
+</p>
+<p>
+However, we have forwarded your résumé
+to a local Magikarp appreciation society.
+</p>
+<p>
+We wish you the best in your future endeavors.
+</p>
+<p>
+Please do not apply again.
+</p>
+<h3>
+TEAM ROCKET RECRUITMENT DIVISION
+</h3>
+<p>
+"Preparing for blasting off since 1997."
+</p>
+<a href="portal.html" class="home-btn">
+⬅ RETURN TO HEADQUARTERS
+</a>
+</div>
+</body>
+</html>

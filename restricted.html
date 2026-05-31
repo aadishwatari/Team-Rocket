@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE FILES</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:50px;
+    background:#2a2117;
+    background-image:
+    radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 70%);
+    font-family:'Special Elite', monospace;
+}
+
+.paper{
+    width:min(900px,95%);
+    background:
+    linear-gradient(rgba(255,255,255,0.02),rgba(0,0,0,0.02)),
+    #e3d1a2;
+    padding:60px;
+    border-radius:2px;
+    box-shadow:
+    0 0 40px rgba(0,0,0,0.5),
+    inset 0 0 120px rgba(100,70,20,0.25);
+    position:relative;
+    overflow:hidden;
+}
+
+/* Paper stains */
+.paper::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+    radial-gradient(circle at 15% 20%, rgba(120,80,20,0.15) 0%, transparent 15%),
+    radial-gradient(circle at 80% 70%, rgba(120,80,20,0.12) 0%, transparent 18%),
+    radial-gradient(circle at 60% 30%, rgba(120,80,20,0.08) 0%, transparent 12%);
+    pointer-events:none;
+}
+
+.paper::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:url("https://www.transparenttextures.com/patterns/old-wall.png");
+    opacity:0.25;
+    pointer-events:none;
+}
+
+h1{
+    text-align:center;
+    font-size:3rem;
+    letter-spacing:8px;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    text-align:center;
+    font-size:0.9rem;
+    margin-bottom:40px;
+    color:#4a3922;
+}
+
+p{
+    line-height:2;
+    font-size:1.05rem;
+    margin-bottom:20px;
+    color:#1c140b;
+}
+
+.redacted{
+    display:inline-block;
+    background:black;
+    color:black;
+    padding:2px 10px;
+    border-radius:2px;
+    user-select:none;
+}
+
+.redacted-line{
+    display:block;
+    width:100%;
+    height:18px;
+    background:black;
+    margin:14px 0;
+}
+
+.note{
+    margin:30px 0;
+    padding-left:20px;
+    border-left:3px solid #6b4f21;
+    font-style:italic;
+}
+
+.stamp{
+    position:absolute;
+    top:40px;
+    right:40px;
+    border:4px solid #8b0000;
+    color:#8b0000;
+    font-size:1.2rem;
+    font-weight:bold;
+    padding:12px 20px;
+    transform:rotate(-12deg);
+    opacity:0.75;
+}
+
+.footer{
+    margin-top:50px;
+    text-align:center;
+    border-top:1px solid rgba(0,0,0,0.3);
+    padding-top:20px;
+    font-size:0.9rem;
+}
+</style>
+</head>
+<body>
+
+<div class="paper">
+
+    <div class="stamp">CONFIDENTIAL</div>
+
+    <h1>THE FILES</h1>
+    <div class="subtitle">
+        TEAM ROCKET INTELLIGENCE DIVISION
+    </div>
+
+    <p>
+        Internal Rocket Archives — Level 7 Clearance Required.
+    </p>
+
+    <p>
+        This document was recovered from an abandoned research facility
+        beneath the Viridian sector. Most records suffered extensive damage
+        during the incident of
+        <span class="redacted">████████</span>.
+    </p>
+
+    <p>
+        Intelligence reports indicate that Project Eclipse was initiated under
+        direct authorization from
+        <span class="redacted">████████████</span>.
+        The objective involved the tracking and containment of unusually
+        powerful Pokémon displaying abnormal behavioral patterns.
+    </p>
+
+    <p>
+        Field agents recovered several artifacts from Site-03, including
+        encrypted transmissions and references to a location known only as
+        <strong>"The Hollow Chamber."</strong>
+    </p>
+
+    <p>
+        Witness testimony remains inconsistent. Multiple personnel reported
+        hearing mechanical sounds originating from sealed sections of the
+        complex despite the facility being officially abandoned for over
+        <span class="redacted">███</span> years.
+    </p>
+
+    <div class="redacted-line"></div>
+
+    <p>
+        Analysis suggests the message was intended for high-ranking Rocket
+        executives and may reference a dormant experiment designated
+        <strong>E-17</strong>.
+    </p>
+
+    <div class="redacted-line"></div>
+    <div class="redacted-line" style="width:80%;"></div>
+
+    <p>
+        Personnel assigned to Project Eclipse included researchers from the
+        Celadon and Cinnabar divisions. Most identities have since been
+        removed from public records.
+    </p>
+
+    <div class="note">
+        "Do not return to the chamber once the eyes awaken."
+    </div>
+
+    <p>
+        Subsequent attempts to locate the site resulted in the disappearance
+        of three reconnaissance teams.
+    </p>
+
+    <p>
+        Status of Project Eclipse:
+    </p>
+
+    <div class="redacted-line" style="width:55%;"></div>
+    <div class="redacted-line" style="width:90%;"></div>
+
+    <div class="footer">
+        FILE ENDS<br><br>
+        Property of Team Rocket Intelligence Division<br>
+        Unauthorized access will be reported.
+    </div>
+
+</div>
+
+</body>
+</html>

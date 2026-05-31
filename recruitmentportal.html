@@ -1,0 +1,428 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Team Rocket Recruitment Archive</title>
+
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#2b0018;
+    color:#e7d7c9;
+    font-family:'Cormorant Garamond',serif;
+    overflow-x:hidden;
+    position:relative;
+}
+
+/* Newspaper texture */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,0.02),
+        rgba(255,255,255,0.02) 2px,
+        transparent 2px,
+        transparent 4px
+    );
+    pointer-events:none;
+    opacity:.3;
+}
+
+/* Flicker */
+@keyframes flicker{
+    0%,100%{opacity:1}
+    50%{opacity:.96}
+    52%{opacity:.8}
+    54%{opacity:1}
+}
+
+body{
+    animation:flicker 6s infinite;
+}
+
+.watermark{
+    position:fixed;
+    font-size:35rem;
+    opacity:.03;
+    color:red;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    pointer-events:none;
+    font-family:'UnifrakturCook',cursive;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:50px 30px;
+}
+
+.header{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.header h1{
+    font-family:'UnifrakturCook',cursive;
+    font-size:4rem;
+    color:#ffccd8;
+}
+
+.header h3{
+    margin-top:10px;
+    font-weight:300;
+    letter-spacing:3px;
+}
+
+.notice{
+    border:1px solid rgba(255,255,255,.2);
+    padding:20px;
+    margin-bottom:40px;
+    background:rgba(0,0,0,.15);
+}
+
+.section{
+    margin-bottom:40px;
+}
+
+.section h2{
+    border-bottom:1px solid rgba(255,255,255,.3);
+    margin-bottom:20px;
+    padding-bottom:10px;
+}
+
+label{
+    display:block;
+    margin-bottom:10px;
+    margin-top:15px;
+}
+
+input,
+textarea,
+select{
+    width:100%;
+    padding:12px;
+    background:#14000c;
+    border:1px solid rgba(255,255,255,.2);
+    color:white;
+    font-size:1rem;
+}
+
+textarea{
+    min-height:140px;
+    resize:vertical;
+}
+
+.radio-group{
+    margin-top:10px;
+}
+
+.radio-group label{
+    display:block;
+}
+
+button{
+    width:100%;
+    padding:18px;
+    background:#5b002f;
+    border:none;
+    color:white;
+    font-size:1.2rem;
+    cursor:pointer;
+    transition:.3s;
+    margin-top:20px;
+}
+
+button:hover{
+    background:#850045;
+}
+
+.alert{
+    position:fixed;
+    right:20px;
+    top:20px;
+    background:black;
+    color:#ff4b6b;
+    border-left:4px solid crimson;
+    padding:15px;
+    width:280px;
+    opacity:0;
+    transform:translateX(50px);
+    transition:.5s;
+    z-index:9999;
+}
+
+.alert.show{
+    opacity:1;
+    transform:translateX(0);
+}
+
+#processing{
+    display:none;
+    text-align:center;
+    padding:120px 30px;
+}
+
+#processing h1{
+    font-family:'UnifrakturCook',cursive;
+    margin-bottom:30px;
+}
+
+.progress{
+    width:80%;
+    max-width:600px;
+    height:35px;
+    margin:auto;
+    border:1px solid white;
+}
+
+.progress-fill{
+    height:100%;
+    width:0%;
+    background:crimson;
+}
+
+#status{
+    margin-top:20px;
+    font-size:1.3rem;
+}
+
+#percent{
+    margin-top:15px;
+    font-size:2rem;
+}
+
+#decisionBtn{
+    display:none;
+    margin-top:40px;
+}
+
+.quote{
+    position:fixed;
+    bottom:20px;
+    left:20px;
+    opacity:.3;
+    font-style:italic;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="watermark">R</div>
+
+<div class="alert" id="alertBox"></div>
+
+<div class="container" id="formContainer">
+
+<div class="header">
+<h1>The Team Rocket Gazette</h1>
+<h3>Special Recruitment Edition</h3>
+</div>
+
+<div class="notice">
+<h2>FOR INTERNAL DISTRIBUTION ONLY</h2>
+<p>Unauthorized possession punishable under Team Rocket Directive 004.</p>
+</div>
+
+<form id="rocketForm">
+
+<div class="section">
+<h2>Section I — Identification</h2>
+
+<label>Alias</label>
+<input type="text" required>
+
+<label>Age</label>
+<input type="number" required>
+
+<label>Region</label>
+<input type="text" required>
+</div>
+
+<div class="section">
+<h2>Section II — Aptitude Assessment</h2>
+
+<label>Have you battled a trainer?</label>
+
+<div class="radio-group">
+<label><input type="radio" name="battle"> Yes</label>
+<label><input type="radio" name="battle"> No</label>
+</div>
+
+<label>Preferred Pokémon Type</label>
+
+<select>
+<option>Dark</option>
+<option>Poison</option>
+<option>Ghost</option>
+<option>Psychic</option>
+<option>Other</option>
+</select>
+
+<label>Gym Badges</label>
+
+<select>
+<option>0</option>
+<option>1-3</option>
+<option>4-7</option>
+<option>8+</option>
+</select>
+
+</div>
+
+<div class="section">
+<h2>Section III — Intelligence Questions</h2>
+
+<label>Why do you wish to join Team Rocket?</label>
+<textarea></textarea>
+
+<label>Describe a morally questionable decision you would make for success.</label>
+<textarea></textarea>
+
+<label>If you were given a Master Ball, how would you use it?</label>
+<textarea></textarea>
+
+<label>What is your greatest weakness?</label>
+<textarea></textarea>
+
+<label>Why should Giovanni trust you?</label>
+<textarea></textarea>
+</div>
+
+<button type="submit">
+SUBMIT DOSSIER
+</button>
+
+</form>
+</div>
+
+<div id="processing">
+
+<h1>TRANSMITTING DOSSIER TO ROCKET HQ</h1>
+
+<div class="progress">
+<div class="progress-fill" id="bar"></div>
+</div>
+
+<div id="status">
+Analyzing loyalty...
+</div>
+
+<div id="percent">
+0%
+</div>
+
+<button id="decisionBtn"
+onclick="window.location.href='decision.html'">
+VIEW DECISION
+</button>
+
+</div>
+
+<div class="quote">
+"Power belongs to those who take it."
+</div>
+
+<script>
+
+const messages = [
+"TEAM ROCKET HAS RETRIEVED YOUR PUBLIC DATA.",
+"IP TRACE COMPLETE.",
+"SURVEILLANCE PROTOCOL ACTIVE.",
+"YOUR DIGITAL FOOTPRINT HAS BEEN CATALOGUED.",
+"TEAM ROCKET IS OBSERVING.",
+"RECRUITMENT ELIGIBILITY UNDER REVIEW.",
+"ROCKET OPERATIVES HAVE ACCESSED YOUR PROFILE.",
+"YOUR LOCATION HAS BEEN LOGGED.",
+"CLASSIFIED DOSSIER CREATED."
+];
+
+function popupAlert(){
+
+const box=document.getElementById("alertBox");
+
+box.innerText=
+messages[Math.floor(Math.random()*messages.length)];
+
+box.classList.add("show");
+
+setTimeout(()=>{
+box.classList.remove("show");
+},3000);
+
+}
+
+setInterval(popupAlert,4500);
+
+const statuses=[
+"Analyzing loyalty...",
+"Cross-referencing criminal records...",
+"Evaluating usefulness...",
+"Forwarding to Giovanni...",
+"Preparing verdict..."
+];
+
+document.getElementById("rocketForm")
+.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+document.getElementById("formContainer")
+.style.display="none";
+
+document.getElementById("processing")
+.style.display="block";
+
+let percent=0;
+
+const bar=document.getElementById("bar");
+const percentText=document.getElementById("percent");
+const status=document.getElementById("status");
+
+const load=setInterval(()=>{
+
+percent++;
+
+bar.style.width=percent+"%";
+percentText.innerText=percent+"%";
+
+status.innerText=
+statuses[Math.floor(Math.random()*statuses.length)];
+
+if(percent>=100){
+
+clearInterval(load);
+
+status.innerText="DOSSIER PROCESSED";
+
+document.getElementById("decisionBtn")
+.style.display="block";
+
+}
+
+},80);
+
+});
+
+</script>
+
+</body>
+</html>
+```

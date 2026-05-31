@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROCKET ACCESS SYSTEM</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:black;
+    color:#ff3333;
+    font-family:Courier New, monospace;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+#loader{
+    text-align:center;
+}
+
+#percent{
+    font-size:5rem;
+    text-shadow:0 0 20px red;
+}
+
+#status{
+    margin-top:15px;
+    font-size:1.2rem;
+    color:white;
+}
+
+#errorScreen{
+    display:none;
+    text-align:center;
+    animation: glitch 0.15s infinite;
+}
+
+#errorTitle{
+    font-size:4rem;
+    color:red;
+    margin-bottom:20px;
+}
+
+#errorText{
+    font-size:1.4rem;
+    color:white;
+    max-width:700px;
+    margin:auto;
+    line-height:1.6;
+}
+
+@keyframes glitch{
+    0%{
+        transform:translate(2px,0);
+    }
+    25%{
+        transform:translate(-2px,2px);
+    }
+    50%{
+        transform:translate(2px,-2px);
+    }
+    75%{
+        transform:translate(-2px,0);
+    }
+    100%{
+        transform:translate(2px,2px);
+    }
+}
+
+.crash{
+    animation: flash 0.08s infinite;
+}
+
+@keyframes flash{
+    0%{background:black;}
+    50%{background:#330000;}
+    100%{background:black;}
+}
+
+.scanline{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+    repeating-linear-gradient(
+        transparent 0px,
+        rgba(255,255,255,.03) 2px,
+        transparent 4px
+    );
+}
+</style>
+</head>
+<body>
+
+<div class="scanline"></div>
+
+<div id="loader">
+    <div id="percent">1%</div>
+    <div id="status">ACCESSING TEAM ROCKET DATABASE...</div>
+</div>
+
+<div id="errorScreen">
+    <div id="errorTitle">SYSTEM FAILURE</div>
+
+    <div id="errorText">
+        ERROR 0xR-404<br><br>
+
+        UNAUTHORIZED USER DETECTED.<br><br>
+
+        YOU ARE NOT PART OF TEAM ROCKET.<br><br>
+
+        ATTEMPTING TO CONTAIN SECURITY BREACH...<br>
+        REDIRECTING TO SECRET DATABASE...
+    </div>
+</div>
+
+<script>
+let percent = 1;
+
+const counter = setInterval(() => {
+
+    document.getElementById("percent").innerText = percent + "%";
+
+    percent++;
+
+    if(percent > 100){
+
+        clearInterval(counter);
+
+        document.body.classList.add("crash");
+
+        setTimeout(() => {
+
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("errorScreen").style.display = "block";
+
+            const beep = setInterval(() => {
+                document.body.style.background =
+                    Math.random() > 0.5 ? "#220000" : "black";
+            }, 80);
+
+            setTimeout(() => {
+                clearInterval(beep);
+                window.location.href = "secretdatabase.html";
+            }, 5000);
+
+        }, 800);
+    }
+
+}, 40);
+</script>
+
+</body>
+</html>

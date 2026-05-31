@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TEAM ROCKET BOUNTY ARCHIVE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    padding:60px;
+    font-family:'Special Elite',cursive;
+
+    background:
+    linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),
+    url("wood.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+
+    overflow-x:hidden;
+    position:relative;
+}
+
+/* Parchment Overlay */   
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+
+    background:
+    repeating-linear-gradient(
+        45deg,
+        rgba(80,60,30,.03),
+        rgba(80,60,30,.03) 2px,
+        transparent 2px,
+        transparent 4px
+    );
+
+    opacity:.7;
+    pointer-events:none;
+    z-index:1;
+}
+
+/* Lantern Glow */
+
+.lantern-light{
+    position:fixed;
+
+    top:-250px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:1000px;
+    height:1000px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(255,220,120,.28),
+        rgba(255,180,80,.12) 40%,
+        transparent 75%
+    );
+
+    animation:flicker 4s infinite;
+    pointer-events:none;
+
+    z-index:2;
+}
+
+@keyframes flicker{
+
+    0%{
+        opacity:.8;
+        transform:translateX(-50%) scale(1);
+    }
+
+    25%{
+        opacity:1;
+        transform:translateX(-50%) scale(1.03);
+    }
+
+    50%{
+        opacity:.7;
+        transform:translateX(-50%) scale(.97);
+    }
+
+    75%{
+        opacity:.95;
+        transform:translateX(-50%) scale(1.02);
+    }
+
+    100%{
+        opacity:.8;
+        transform:translateX(-50%) scale(1);
+    }
+}
+
+/* Board */
+
+.board{
+    max-width:1700px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:55px;
+
+    position:relative;
+    z-index:5;
+}
+
+/* Posters */
+
+.poster{
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+    linear-gradient(
+        90deg,
+        transparent 49%,
+        rgba(0,0,0,.08) 50%,
+        transparent 51%
+    ),
+
+    linear-gradient(
+        rgba(255,255,255,.04),
+        rgba(0,0,0,.04)
+    ),
+
+    #d7c39c;
+
+    padding:18px;
+
+    border:1px solid #8b6f45;
+
+    box-shadow:
+    0 15px 30px rgba(0,0,0,.45),
+    inset 0 0 50px rgba(0,0,0,.18);
+
+    transform:rotate(calc(var(--r) * 1deg));
+
+    transition:.35s;
+}
+
+.poster:hover{
+    transform:
+    rotate(calc(var(--r) * 1deg))
+    scale(1.05);
+
+    z-index:20;
+}
+
+.poster::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+    radial-gradient(circle at top left,
+    rgba(0,0,0,.45),transparent 15%),
+
+    radial-gradient(circle at top right,
+    rgba(0,0,0,.45),transparent 15%),
+
+    radial-gradient(circle at bottom left,
+    rgba(0,0,0,.45),transparent 15%),
+
+    radial-gradient(circle at bottom right,
+    rgba(0,0,0,.45),transparent 15%);
+
+    mix-blend-mode:multiply;
+    pointer-events:none;
+}
+
+/* Pin */
+
+.pin{
+    position:absolute;
+
+    top:10px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:18px;
+    height:18px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(circle at 30% 30%,#fff,#666);
+
+    box-shadow:0 3px 8px rgba(0,0,0,.5);
+}
+
+/* Title */
+
+.wanted{
+    text-align:center;
+
+    font-size:2rem;
+
+    letter-spacing:4px;
+
+    color:#2a1707;
+
+    margin-bottom:14px;
+}
+
+/* Stamps */
+
+.stamp{
+    position:absolute;
+
+    top:70px;
+    left:12px;
+
+    padding:8px;
+
+    border:3px solid rgba(150,0,0,.6);
+
+    color:rgba(150,0,0,.65);
+
+    font-size:.65rem;
+
+    text-align:center;
+
+    transform:rotate(-18deg);
+}
+
+.confidential{
+    position:absolute;
+
+    bottom:70px;
+    right:10px;
+
+    border:3px solid rgba(160,0,0,.65);
+
+    color:rgba(160,0,0,.7);
+
+    padding:5px 10px;
+
+    transform:rotate(12deg);
+
+    font-size:.75rem;
+}
+
+/* Coffee Ring */
+
+.coffee{
+    position:absolute;
+
+    width:90px;
+    height:90px;
+
+    border:6px solid rgba(90,50,20,.18);
+
+    border-radius:50%;
+
+    top:50px;
+    right:15px;
+
+    transform:rotate(-15deg);
+}
+
+.coffee::after{
+    content:"";
+
+    position:absolute;
+
+    width:55px;
+    height:55px;
+
+    border:4px solid rgba(90,50,20,.12);
+
+    border-radius:50%;
+
+    top:10px;
+    left:10px;
+}
+
+/* Image */
+
+.photo{
+    width:100%;
+    height:320px;
+
+    object-fit:cover;
+
+    border:6px solid #3a2917;
+
+    filter:
+    sepia(.45)
+    contrast(1.08)
+    brightness(.95);
+}
+
+/* Name */
+
+.name{
+    text-align:center;
+
+    margin-top:18px;
+
+    color:#231306;
+
+    font-size:1.25rem;
+
+    letter-spacing:2px;
+}
+
+
+
+.dust{
+    position:fixed;
+
+    width:3px;
+    height:3px;
+
+    background:#fff2b8;
+
+    border-radius:50%;
+
+    opacity:.2;
+
+    pointer-events:none;
+
+    animation:float linear infinite;
+}
+
+@keyframes float{
+
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(-400px);
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div class="lantern-light"></div>
+
+<div class="board">
+
+    <div class="poster" style="--r:-3;">
+        <div class="pin"></div>
+        <div class="wanted">WANTED</div>
+        <div class="stamp">TEAM ROCKET<br>INTELLIGENCE</div>
+        <div class="coffee"></div>
+        <img src="b1.png" class="photo">
+        <div class="confidential">CONFIDENTIAL</div>
+        <div class="name">TARGET #001</div>
+    </div>
+
+    <div class="poster" style="--r:2;">
+        <div class="pin"></div>
+        <div class="wanted">WANTED</div>
+        <div class="stamp">TEAM ROCKET<br>INTELLIGENCE</div>
+        <div class="coffee"></div>
+        <img src="b2.png" class="photo">
+        <div class="confidential">CONFIDENTIAL</div>
+        <div class="name">TARGET #002</div>
+    </div>
+
+    <div class="poster" style="--r:-2;">
+        <div class="pin"></div>
+        <div class="wanted">WANTED</div>
+        <div class="stamp">TEAM ROCKET<br>INTELLIGENCE</div>
+        <div class="coffee"></div>
+        <img src="b3.png" class="photo">
+        <div class="confidential">CONFIDENTIAL</div>
+        <div class="name">TARGET #003</div>
+    </div>
+
+    <div class="poster" style="--r:4;">
+        <div class="pin"></div>
+        <div class="wanted">WANTED</div>
+        <div class="stamp">TEAM ROCKET<br>INTELLIGENCE</div>
+        <div class="coffee"></div>
+        <img src="b4.png" class="photo">
+        <div class="confidential">CONFIDENTIAL</div>
+        <div class="name">TARGET #004</div>
+    </div>
+
+    <div class="poster" style="--r:-4;">
+        <div class="pin"></div>
+        <div class="wanted">WANTED</div>
+        <div class="stamp">TEAM ROCKET<br>INTELLIGENCE</div>
+        <div class="coffee"></div>
+        <img src="b5.png" class="photo">
+        <div class="confidential">CONFIDENTIAL</div>
+        <div class="name">TARGET #005</div>
+    </div>
+
+    <div class="poster" style="--r:3;">
+        <div class="pin"></div>
+        <div class="wanted">WANTED</div>
+        <div class="stamp">TEAM ROCKET<br>INTELLIGENCE</div>
+        <div class="coffee"></div>
+        <img src="b6.png" class="photo">
+        <div class="confidential">CONFIDENTIAL</div>
+        <div class="name">TARGET #006</div>
+    </div>
+
+    <div class="poster" style="--r:-1;">
+        <div class="pin"></div>
+        <div class="wanted">WANTED</div>
+        <div class="stamp">TEAM ROCKET<br>INTELLIGENCE</div>
+        <div class="coffee"></div>
+        <img src="b7.png" class="photo">
+        <div class="confidential">CONFIDENTIAL</div>
+        <div class="name">TARGET #007</div>
+    </div>
+
+    <div class="poster" style="--r:2;">
+        <div class="pin"></div>
+        <div class="wanted">WANTED</div>
+        <div class="stamp">TEAM ROCKET<br>INTELLIGENCE</div>
+        <div class="coffee"></div>
+        <img src="b8.png" class="photo">
+        <div class="confidential">CONFIDENTIAL</div>
+        <div class="name">TARGET #008</div>
+    </div>
+
+    <div class="poster" style="--r:-3;">
+        <div class="pin"></div>
+        <div class="wanted">WANTED</div>
+        <div class="stamp">TEAM ROCKET<br>INTELLIGENCE</div>
+        <div class="coffee"></div>
+        <img src="b9.png" class="photo">
+        <div class="confidential">CONFIDENTIAL</div>
+        <div class="name">TARGET #009</div>
+    </div>
+
+    <div class="poster" style="--r:4;">
+        <div class="pin"></div>
+        <div class="wanted">WANTED</div>
+        <div class="stamp">TEAM ROCKET<br>INTELLIGENCE</div>
+        <div class="coffee"></div>
+        <img src="b10.png" class="photo">
+        <div class="confidential">CONFIDENTIAL</div>
+        <div class="name">TARGET #010</div>
+    </div>
+
+</div>
+
+<script>
+
+for(let i=0;i<60;i++){
+
+    let dust=document.createElement("div");
+
+    dust.classList.add("dust");
+
+    dust.style.left=Math.random()*100+"vw";
+    dust.style.top=Math.random()*100+"vh";
+
+    dust.style.animationDuration=
+    (8+Math.random()*12)+"s";
+
+    document.body.appendChild(dust);
+}
+
+</script>
+
+</body>
+</html>

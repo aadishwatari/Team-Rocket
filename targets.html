@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TEAM ROCKET TARGET DATABASE</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Courier New, monospace;
+}
+
+body{
+background:#05014a;
+overflow-x:hidden;
+min-height:100vh;
+color:white;
+position:relative;
+}
+
+/* Newspaper Texture */
+
+body::before{
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background:
+url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+opacity:0.15;
+pointer-events:none;
+z-index:1;
+}
+
+/* CRT Scanlines */
+
+body::after{
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background:
+repeating-linear-gradient(
+0deg,
+rgba(255,255,255,0.02),
+rgba(255,255,255,0.02) 1px,
+transparent 1px,
+transparent 3px
+);
+pointer-events:none;
+z-index:999;
+}
+
+/* Flicker */
+
+@keyframes flicker{
+0%{opacity:.95;}
+5%{opacity:.8;}
+10%{opacity:1;}
+20%{opacity:.9;}
+50%{opacity:1;}
+80%{opacity:.85;}
+100%{opacity:1;}
+}
+
+body{
+animation:flicker .15s infinite;
+}
+
+/* Header */
+
+.header{
+text-align:center;
+padding:50px 20px;
+position:relative;
+z-index:5;
+}
+
+.header h1{
+font-size:4rem;
+letter-spacing:8px;
+color:#ff0048;
+text-shadow:
+0 0 10px red,
+0 0 30px red;
+}
+
+.header p{
+margin-top:10px;
+color:#b9b4ff;
+}
+
+/* Target Grid */
+
+.grid{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:40px;
+padding:50px;
+position:relative;
+z-index:5;
+}
+
+/* Photocard */
+
+.card{
+width:260px;
+background:
+rgba(0,0,0,.7);
+border:2px solid #6b62ff;
+padding:15px;
+position:relative;
+transform:rotate(calc(var(--r) * 1deg));
+transition:.4s;
+box-shadow:
+0 0 20px rgba(107,98,255,.4);
+}
+
+.card:hover{
+transform:scale(1.05);
+box-shadow:
+0 0 40px #ff0048;
+}
+
+.card img{
+width:100%;
+height:280px;
+object-fit:cover;
+filter:grayscale(20%);
+}
+
+.card h2{
+margin-top:10px;
+color:#ff0048;
+}
+
+.card p{
+margin-top:10px;
+font-size:.9rem;
+color:#ddd;
+line-height:1.4;
+}
+
+/* Cult Stamp */
+
+.stamp{
+position:absolute;
+top:15px;
+right:15px;
+border:2px solid red;
+padding:5px 10px;
+transform:rotate(20deg);
+color:red;
+font-weight:bold;
+font-size:.8rem;
+}
+
+/* Redacted Text */
+
+.redact{
+background:black;
+color:black;
+padding:2px 4px;
+}
+
+/* Floating Alerts */
+
+.alert{
+position:fixed;
+color:#ff0048;
+font-size:.9rem;
+pointer-events:none;
+font-weight:bold;
+z-index:500;
+animation:floatUp 5s linear forwards;
+}
+
+@keyframes floatUp{
+from{
+opacity:1;
+transform:translateY(0);
+}
+to{
+opacity:0;
+transform:translateY(-200px);
+}
+}
+
+/* VHS Shake */
+
+@keyframes glitch{
+0%{transform:translate(0);}
+20%{transform:translate(-2px,2px);}
+40%{transform:translate(2px,-2px);}
+60%{transform:translate(-3px,0);}
+80%{transform:translate(3px,1px);}
+100%{transform:translate(0);}
+}
+
+.glitch{
+animation:glitch .15s infinite;
+}
+
+/* Footer */
+
+.footer{
+text-align:center;
+padding:50px;
+color:#888;
+position:relative;
+z-index:5;
+}
+
+</style>
+</head>
+<body>
+
+<div class="header glitch">
+<h1>TARGET DATABASE</h1>
+<p>TEAM ROCKET INTELLIGENCE DIVISION</p>
+</div>
+
+<div class="grid">
+
+<div class="card" style="--r:-3">
+<div class="stamp">ACTIVE</div>
+<img src="001.png">
+<h2>FILE #001</h2>
+<p>
+Observed near
+<span class="redact">██████</span>.
+Capture priority:
+HIGH.
+</p>
+</div>
+
+<div class="card" style="--r:2">
+<div class="stamp">WATCH</div>
+<img src="002.png">
+<h2>FILE #002</h2>
+<p>
+Possesses unusual
+energy signatures.
+Tracking initiated.
+</p>
+</div>
+
+<div class="card" style="--r:-2">
+<div class="stamp">TOP SECRET</div>
+<img src="003.png">
+<h2>FILE #003</h2>
+<p>
+Subject linked to
+multiple failed
+Rocket operations.
+</p>
+</div>
+
+<div class="card" style="--r:4">
+<div class="stamp">WANTED</div>
+<img src="004.png">
+<h2>FILE #004</h2>
+<p>
+Extreme rarity.
+Potential for
+Project Mew.
+</p>
+</div>
+
+</div>
+
+<div class="footer">
+PROPERTY OF TEAM ROCKET • UNAUTHORIZED ACCESS PROHIBITED
+</div>
+
+<script>
+
+const messages = [
+"BLEEP",
+"TRACKING TARGET",
+"SIGNAL LOST",
+"ROCKET DATABASE",
+"SCANNING...",
+"SUBJECT DETECTED",
+"WARNING",
+"UNAUTHORIZED ACCESS",
+"ENCRYPTION FAILURE",
+"TARGET LOCKED"
+];
+
+function spawnAlert(){
+
+const alert = document.createElement("div");
+
+alert.className="alert";
+alert.innerText=
+messages[Math.floor(Math.random()*messages.length)];
+
+alert.style.left=Math.random()*window.innerWidth+"px";
+alert.style.top=Math.random()*window.innerHeight+"px";
+
+document.body.appendChild(alert);
+
+setTimeout(()=>{
+alert.remove();
+},5000);
+
+}
+
+setInterval(spawnAlert,800);
+
+/* Random Crash Effect */
+
+setInterval(()=>{
+
+document.body.style.transform=
+`translate(${Math.random()*6-3}px,
+${Math.random()*6-3}px)`;
+
+setTimeout(()=>{
+document.body.style.transform="translate(0)";
+},100);
+
+},3000);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RESTRICTED TERMINAL</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#000;
+    color:#00ff66;
+    font-family:"Courier New", monospace;
+    overflow:hidden;
+    height:100vh;
+    cursor:crosshair;
+}
+
+/* Scanlines */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    repeating-linear-gradient(
+        transparent 0px,
+        rgba(255,255,255,0.03) 2px,
+        transparent 4px
+    );
+    pointer-events:none;
+    z-index:1000;
+}
+
+/* Flicker */
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:rgba(255,255,255,0.02);
+    animation:flicker 0.15s infinite;
+    pointer-events:none;
+}
+
+@keyframes flicker{
+    0%{opacity:0.1}
+    50%{opacity:0.04}
+    100%{opacity:0.12}
+}
+
+.container{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+}
+
+h1{
+    font-size:5rem;
+    letter-spacing:10px;
+    color:#ff0000;
+    text-shadow:0 0 20px red;
+    animation:glitch 0.3s infinite;
+}
+
+@keyframes glitch{
+    0%{transform:translateX(0)}
+    25%{transform:translateX(-2px)}
+    50%{transform:translateX(2px)}
+    75%{transform:translateX(-1px)}
+    100%{transform:translateX(0)}
+}
+
+.subtitle{
+    margin-top:20px;
+    font-size:1.2rem;
+}
+
+.tracker{
+    position:absolute;
+    top:20px;
+    left:20px;
+    width:350px;
+    border:1px solid #00ff66;
+    padding:15px;
+    background:rgba(0,255,100,0.05);
+    box-shadow:0 0 15px rgba(0,255,100,0.3);
+}
+
+.tracker h2{
+    color:#00ff66;
+    margin-bottom:10px;
+}
+
+.data{
+    margin:5px 0;
+}
+
+/* Cursor Static */
+.static{
+    position:fixed;
+    width:10px;
+    height:10px;
+    background:white;
+    pointer-events:none;
+    mix-blend-mode:screen;
+    animation:fade 0.5s linear forwards;
+}
+
+@keyframes fade{
+    to{
+        opacity:0;
+        transform:scale(3);
+    }
+}
+
+.warning{
+    position:absolute;
+    bottom:30px;
+    width:100%;
+    text-align:center;
+    color:red;
+    font-size:1.3rem;
+    letter-spacing:4px;
+    animation:blink 1s infinite;
+}
+
+@keyframes blink{
+    50%{opacity:0;}
+}
+</style>
+</head>
+<body>
+
+<div class="tracker">
+    <h2>TRACKING TERMINAL</h2>
+
+    <div class="data">STATUS: UNAUTHORIZED</div>
+    <div class="data">ACCESS LEVEL: DENIED</div>
+    <div class="data" id="browser"></div>
+    <div class="data" id="platform"></div>
+    <div class="data">LOCATION SCAN: ████████</div>
+    <div class="data">TRACE STATUS: ACTIVE</div>
+</div>
+
+<div class="container">
+    <h1>ACCESS DENIED</h1>
+    <div class="subtitle">
+        Unauthorized access detected.<br>
+        Security protocols engaged.
+    </div>
+</div>
+
+<div class="warning">
+    WARNING // RESTRICTED TEAM ROCKET DATABASE
+</div>
+
+<script>
+/* Browser Info */
+document.getElementById("browser").innerText =
+"USER AGENT: " + navigator.userAgent.substring(0,35) + "...";
+
+document.getElementById("platform").innerText =
+"PLATFORM: " + navigator.platform;
+
+/* Cursor Static Effect */
+document.addEventListener("mousemove",(e)=>{
+
+    for(let i=0;i<3;i++){
+
+        const dot=document.createElement("div");
+        dot.classList.add("static");
+
+        dot.style.left=(e.clientX+(Math.random()*20-10))+"px";
+        dot.style.top=(e.clientY+(Math.random()*20-10))+"px";
+
+        dot.style.width=(Math.random()*8+4)+"px";
+        dot.style.height=dot.style.width;
+
+        document.body.appendChild(dot);
+
+        setTimeout(()=>{
+            dot.remove();
+        },500);
+    }
+});
+
+/* Random Terminal Messages */
+const messages=[
+"TRACE ROUTE INITIATED",
+"SECURITY ALERT",
+"SCANNING DEVICE",
+"ACCESS LOGGED",
+"ENCRYPTION ACTIVE",
+"IDENTITY UNKNOWN"
+];
+
+setInterval(()=>{
+
+    const popup=document.createElement("div");
+
+    popup.innerText=
+    messages[Math.floor(Math.random()*messages.length)];
+
+    popup.style.position="fixed";
+    popup.style.left=Math.random()*window.innerWidth+"px";
+    popup.style.top=Math.random()*window.innerHeight+"px";
+    popup.style.color="#00ff66";
+    popup.style.fontSize="12px";
+    popup.style.pointerEvents="none";
+
+    document.body.appendChild(popup);
+
+    setTimeout(()=>{
+        popup.remove();
+    },2000);
+
+},500);
+</script>
+
+</body>
+</html>

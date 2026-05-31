@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TEAM ROCKET EXPERIMENT ARCHIVES</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#05014a;
+    font-family:'Special Elite', monospace;
+    color:white;
+    min-height:100vh;
+    overflow-x:hidden;
+    position:relative;
+}
+
+/* Newspaper Texture */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+    opacity:0.18;
+    pointer-events:none;
+    z-index:0;
+}
+
+/* Scanlines */
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,0.02) 0px,
+        rgba(255,255,255,0.02) 1px,
+        transparent 1px,
+        transparent 4px
+    );
+    pointer-events:none;
+    z-index:1;
+}
+
+/* Header */
+
+.header{
+    text-align:center;
+    padding:60px 20px 40px;
+    position:relative;
+    z-index:2;
+}
+
+.header h1{
+    font-size:4rem;
+    letter-spacing:5px;
+    color:#ff4b4b;
+    text-shadow:0 0 15px rgba(255,75,75,.7);
+}
+
+.header p{
+    margin-top:15px;
+    color:#c5c0ff;
+    font-size:1rem;
+}
+
+/* Archives */
+
+.archive-container{
+    width:90%;
+    max-width:1400px;
+    margin:auto;
+    padding-bottom:80px;
+    position:relative;
+    z-index:2;
+}
+
+.archive-card{
+    display:flex;
+    gap:25px;
+    align-items:center;
+    margin-bottom:30px;
+    padding:25px;
+    background:rgba(0,0,0,0.55);
+    border-left:8px solid #ff4b4b;
+    border-right:1px solid #6d63ff;
+    border-top:1px solid #6d63ff;
+    border-bottom:1px solid #6d63ff;
+    text-decoration:none;
+    color:white;
+    transition:0.3s;
+    position:relative;
+    overflow:hidden;
+}
+
+.archive-card:hover{
+    transform:translateX(10px);
+    box-shadow:0 0 30px rgba(109,99,255,.5);
+}
+
+.archive-card:hover .archive-title{
+    color:#ff4b4b;
+}
+
+/* File Number */
+
+.file-number{
+    min-width:120px;
+    text-align:center;
+    font-size:1.2rem;
+    color:#ff4b4b;
+}
+
+/* Content */
+
+.archive-content{
+    flex:1;
+}
+
+.archive-title{
+    font-size:1.8rem;
+    margin-bottom:12px;
+    transition:0.3s;
+}
+
+.archive-desc{
+    color:#d9d9d9;
+    line-height:1.6;
+}
+
+/* Status */
+
+.status{
+    border:1px solid red;
+    padding:10px 15px;
+    color:red;
+    font-size:0.9rem;
+}
+
+/* Random Classified Stamp */
+
+.stamp{
+    position:absolute;
+    top:15px;
+    right:120px;
+    transform:rotate(-12deg);
+    border:2px solid red;
+    padding:5px 12px;
+    color:red;
+    opacity:.5;
+}
+
+/* Glitch Text */
+
+.glitch{
+    animation:flicker 0.15s infinite;
+}
+
+@keyframes flicker{
+    0%{opacity:1;}
+    50%{opacity:.85;}
+    100%{opacity:1;}
+}
+
+/* Floating Messages */
+
+.message{
+    position:fixed;
+    color:#ff4b4b;
+    font-size:0.9rem;
+    pointer-events:none;
+    animation:rise 4s linear forwards;
+    z-index:999;
+}
+
+@keyframes rise{
+    from{
+        opacity:1;
+        transform:translateY(0);
+    }
+    to{
+        opacity:0;
+        transform:translateY(-120px);
+    }
+}
+
+.footer{
+    text-align:center;
+    padding:40px;
+    color:#8d8d8d;
+    position:relative;
+    z-index:2;
+}
+</style>
+</head>
+<body>
+
+<div class="header glitch">
+    <h1>EXPERIMENT ARCHIVES</h1>
+    <p>TEAM ROCKET RESEARCH DIVISION • CLASSIFIED</p>
+</div>
+
+<div class="archive-container">
+
+    <a href="experiment1.html" class="archive-card">
+        <div class="stamp">CLASSIFIED</div>
+        <div class="file-number">EXP-001</div>
+
+        <div class="archive-content">
+            <div class="archive-title">MEWTWO CLONING PROJECT</div>
+            <div class="archive-desc">
+                Internal documents regarding genetic reconstruction
+                attempts based on recovered Mew DNA samples.
+            </div>
+        </div>
+
+        <div class="status">OPEN FILE</div>
+    </a>
+
+    <a href="experiment2.html" class="archive-card">
+        <div class="stamp">RESTRICTED</div>
+        <div class="file-number">EXP-002</div>
+
+        <div class="archive-content">
+            <div class="archive-title">SHADOW ENERGY EXTRACTION</div>
+            <div class="archive-desc">
+                Experimental procedures involving unstable energy
+                harvested from captured Pokémon specimens.
+            </div>
+        </div>
+
+        <div class="status">OPEN FILE</div>
+    </a>
+
+    <a href="experiment3.html" class="archive-card">
+        <div class="stamp">SEALED</div>
+        <div class="file-number">EXP-003</div>
+
+        <div class="archive-content">
+            <div class="archive-title">PROJECT MASTER BALL</div>
+            <div class="archive-desc">
+                Development logs concerning universal capture
+                technology and containment systems.
+            </div>
+        </div>
+
+        <div class="status">OPEN FILE</div>
+    </a>
+
+    <a href="experiment4.html" class="archive-card">
+        <div class="stamp">TOP SECRET</div>
+        <div class="file-number">EXP-004</div>
+
+        <div class="archive-content">
+            <div class="archive-title">PSYCHIC AMPLIFICATION TESTS</div>
+            <div class="archive-desc">
+                Attempts to artificially enhance psychic abilities
+                through controlled laboratory conditions.
+            </div>
+        </div>
+
+        <div class="status">OPEN FILE</div>
+    </a>
+
+    <a href="experiment5.html" class="archive-card">
+        <div class="stamp">CONFIDENTIAL</div>
+        <div class="file-number">EXP-005</div>
+
+        <div class="archive-content">
+            <div class="archive-title">PROJECT PARADISE</div>
+            <div class="archive-desc">
+                Reports detailing construction of an isolated
+                Pokémon testing habitat.
+            </div>
+        </div>
+
+        <div class="status">OPEN FILE</div>
+    </a>
+
+</div>
+
+<div class="footer">
+    PROPERTY OF TEAM ROCKET • UNAUTHORIZED ACCESS PROHIBITED
+</div>
+
+<script>
+
+const alerts = [
+"ACCESSING FILE...",
+"LOADING REPORT...",
+"DECRYPTING...",
+"WARNING",
+"EXPERIMENT LOG FOUND",
+"ROCKET NETWORK ACTIVE",
+"CLASSIFIED DATA"
+];
+
+function createMessage(){
+
+    const msg = document.createElement("div");
+
+    msg.classList.add("message");
+
+    msg.innerText =
+    alerts[Math.floor(Math.random()*alerts.length)];
+
+    msg.style.left =
+    Math.random()*window.innerWidth + "px";
+
+    msg.style.top =
+    Math.random()*window.innerHeight + "px";
+
+    document.body.appendChild(msg);
+
+    setTimeout(()=>{
+        msg.remove();
+    },4000);
+}
+
+setInterval(createMessage,1200);
+
+</script>
+
+</body>
+</html>
