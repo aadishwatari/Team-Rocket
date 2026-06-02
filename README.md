@@ -13,5 +13,5 @@
 <h1>  The homepage </h1>
 <p> the website starts with a very glitchy page with different warnings, such as your data may be stolen, or your location may be tracked.... so continue with your own risk (duh! its a team rocket website)</p>
 <P> Click on the R logo to continue</P>
-
+<img src="logo.png">
 
