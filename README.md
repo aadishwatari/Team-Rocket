@@ -35,7 +35,7 @@ Your response will be evaluated by the executives of team rocket... during this 
 A page with collection of six folder will open....the page is supposed to remain concealed from public view. However, due to some glitch the portal became accessible to public view... but still contains several malwares. 
 <br>
 <br>
-1. The first folder is called target files. It contains list of elite Pokémons that is priority rocket field members to capture.
+1. The first folder is called target files. It contains list of elite Pokémons that is priority of team rocket field members to capture.
 <br>
 <br>
 2. The second folder contains all the research projects and the newspaper log that has been retracted from public.
