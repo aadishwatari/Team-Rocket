@@ -9,3 +9,8 @@
 3. The recruitment page (You can apply to become a member of team rocket... But you will be only selected if you are qualified enough) <<br>
 4. The secret database (includes further information about Team Rocket)<br>
 5. Pokedex (includes all the Pokémon used by team rocket) </P>
+
+<h1>  The homepage </h1>
+<p> the website starts with a very glitchy page with different warnings, such as your data may be stolen, or your location may be tracked.... so continue with your own risk (duh! its a team rocket website)</p>
+<P> Click on the R logo to continue</P>
+<img src: "logo.png">
