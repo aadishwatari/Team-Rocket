@@ -31,5 +31,25 @@ Your response will be evaluated by the executives of team rocket... during this 
 
 <br> on the decision page, YOU WILL BE REJCTED BEACAUSE NO ONE IS GOOD ENOUGH TO JOIN TEAM ROCKET
 
+<h1>Secret Database</h1>
+A page with collection of six folder will open....the page is supposed to remain concealed from public view. However, due to some glitch the portal became accessible to public view... but still contains several malwares. 
+<br>
+<br>
+1. The first folder is called target files. It contains list of elite Pokémons that is priority rocket field members to capture.
+<br>
+<br>
+2. The second folder contains all the research projects and the newspaper log that has been retracted from public.
+<br>
+<br>
+3. The third folder remains inaccessible, however, it does track the users location<br><br>
+4. Fourth folder is corrupt and does not work it automatically sends users to the portal, page in five seconds.<br><br>
+5. The watchlist folder contains all the targets of team rocket<br><br>
+6. The last folder contain a mysterious file... and certain lines and words of that file has been directed from public's view
 
+<h1>Pokedex</h1>
+This contains list of Pokémon that team rocket team uses in their field mission. 
 
+<h1> Demo Link</h1>
+This is the demo link: https://aadishwatari.github.io/Team-Rocket/
+<br><br><br>
+Hope you enjoyed this ✮
