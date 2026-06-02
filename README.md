@@ -20,5 +20,16 @@ When you will enter the website, you will get the ICONIC introduction of team ro
 <br>
 It will have the picture of leader of team Rocket Rocket. Furthermore, beneath his picture would be quote and speech given by him that summarise the purpose and view of team rocket. 
 <br>
-There will be a Mewoth <img src="mewoth.png">
+There will be a Mewoth that is teams rocket AI chatbot [ however, because it is a pokemon it could only say his name hehe] <img src="meowth.png"> 
+<br>
+On the head of the page, there would be options to go to other pages such as recruitment portal, database and pokedex.
+
+<h1> Recruitment portal</h1>
+You have to fill a questionnaire... that will decide your fate of joining team rocket... After filling out questionnaire, you can submit it.
+<br>
+Your response will be evaluated by the executives of team rocket... during this period, the screen will load. Once they have made their decision, you will be directed to decision portal.
+
+<br> on the decision page, YOU WILL BE REJCTED BEACAUSE NO ONE IS GOOD ENOUGH TO JOIN TEAM ROCKET
+
+
 
