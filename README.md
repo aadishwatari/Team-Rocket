@@ -16,3 +16,9 @@
 <img src="logo.png">
 
 <h1>  The homepage </h1>
+When you will enter the website, you will get the ICONIC introduction of team rocket. You can use the cut button next to it to remove it. It will appear like a pop-up.
+<br>
+It will have the picture of leader of team Rocket Rocket. Furthermore, beneath his picture would be quote and speech given by him that summarise the purpose and view of team rocket. 
+<br>
+There will be a Mewoth <img src="mewoth.png">
+
