@@ -1,6 +1,6 @@
 <h1> Team Rocket's official website (Ironic Version) </h1>
 <P>I grew up watching Pokémon and it is one of my favourite shows ever. I wanted to make a website that would be something out of that universe so I came up with this idea of making an official team rocket website. </P>
-<p>Team rocket is antagonist organisation in the series that primarily wants to capture Ash's Pikachu because of it tremendous power. However, the overall objective of disorganisation is much more darker. They view Pokémons as a mere tool and use their abilities for their goal of 'world domination'. <br><br> This is made for #horizons</p>
+<p>Team rocket is antagonist organisation in the series that primarily wants to capture Ash's Pikachu because of it tremendous power. However, the overall objective of sorganisation is much more darker. They view Pokémons as a mere tool and use their abilities for their goal of 'world domination'. <br><br> This is made for #horizons</p>
 
 <h1> Content of the website</h1>
 <p>
